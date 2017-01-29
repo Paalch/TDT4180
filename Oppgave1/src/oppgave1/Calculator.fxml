@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="480.0" minWidth="320.0" prefHeight="0.0" prefWidth="0.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.21548117154811716" layoutX="68.0" layoutY="122.0" nodeOrientation="RIGHT_TO_LEFT" orientation="VERTICAL" prefHeight="480.0" prefWidth="320.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane id="top" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label id="output" layoutX="11.0" layoutY="31.0" prefHeight="81.0" prefWidth="237.0" text="1,478" textFill="WHITE">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <GridPane prefHeight="384.0" prefWidth="318.0" styleClass="gridpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="3">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="C" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="2">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="⁺∕₋" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="1">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="\%" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label id="whiteLabel" contentDisplay="CENTER" layoutX="25.0" layoutY="10.0" styleClass="whiteLabel" text="÷" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="orange" />
+                              <String fx:value="calbutton" />
+                           </styleClass>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="7" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="8" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="9" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label id="whiteLabel" layoutX="25.0" layoutY="10.0" text="×" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="orange" />
+                              <String fx:value="calbutton" />
+                           </styleClass>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="4" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="5" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="6" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                           <children>
+                              <Label id="whiteLabel" contentDisplay="RIGHT" layoutX="32.0" layoutY="10.0" text="-" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="orange" />
+                              <String fx:value="calbutton" />
+                           </styleClass>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" prefHeight="58.0" prefWidth="9.0" text="1" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="2" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <Label layoutX="30.0" layoutY="10.0" text="3" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                           <children>
+                              <Label id="whiteLabel" alignment="TOP_LEFT" layoutX="25.0" layoutY="10.0" prefHeight="58.0" prefWidth="33.0" text="+" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="orange" />
+                              <String fx:value="calbutton" />
+                           </styleClass>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                           <children>
+                              <Label layoutX="110.0" layoutY="10.0" text="0" />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="calbutton" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <children>
+                              <Label layoutX="35.0" layoutY="10.0" text="." />
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                           <children>
+                              <Label id="whiteLabel" layoutX="25.0" layoutY="10.0" text="=" />
+                           </children>
+                           <styleClass>
+                              <String fx:value="orange" />
+                              <String fx:value="calbutton" />
+                           </styleClass>
+                        </Pane>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

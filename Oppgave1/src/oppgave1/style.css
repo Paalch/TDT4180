@@ -1,0 +1,37 @@
+.gridpane {
+	-fx-background-color :  #D8D9DB;
+	-fx-color:white; 
+}
+.orange {
+	-fx-background-color: #F99212;
+	-fx-text-alignment: center;
+}
+#top {
+	-fx-background-color: black; 
+}
+#main {
+	-fx-background-color:black; 
+	-fx-border:0px; 
+}
+#whiteLabel {
+	-fx-text-fill:white;
+	-fx-font-size:40px; 
+	-fx-center: true; 
+	-fx-text-alignment: center;
+}
+.split-pane-divider {
+   -fx-background-color: black;
+}
+.label {
+	-fx-text-fill:black;
+	-fx-font-size: 34px; 
+}
+.calbutton {
+	-fx-border-color: black; 
+	-fx-border-width: .2;
+
+}
+#output {
+	-fx-text-fill:white;
+	-fx-font-size:50px; 
+}

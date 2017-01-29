@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml/1">
+	<Pane styleClass="row" style ="-fx-background-color:E3C9B0;"  prefHeight="120" prefWidth="320">
+		<ImageView layoutX = "15" layoutY ="30" fitHeight="60" fitWidth="60" >
+        	<image>
+            	<Image url="@../../Pictures/Converter/US.PNG" />
+        	</image>
+     	</ImageView>
+		<Label styleClass="Valuelabel" layoutX = "90" prefHeight="120" prefWidth="320" alignment="CENTER_LEFT"  text="USD" ></Label>
+		<Label styleClass="CurrentcyLabel" id ="redText" prefHeight="120" prefWidth="320" alignment="CENTER_RIGHT" layoutX="-10" text="10,000"></Label>
+	</Pane>
+	<Pane styleClass="row" layoutY="120" prefHeight="120" prefWidth="320">
+		<ImageView layoutX = "15" layoutY ="30" fitHeight="60" fitWidth="60" >
+        	<image>
+            	<Image url="@../../Pictures/Converter/JAP.PNG" />
+        	</image>
+     	</ImageView>
+		<Label styleClass="Valuelabel"  text="JPY" prefHeight="120" prefWidth="320" alignment="CENTER_LEFT"  layoutX = "90"></Label>
+		<Label styleClass="CurrentcyLabel" prefHeight="120" prefWidth="320" alignment="CENTER_RIGHT" layoutX="-10" text="992,815"></Label>
+	</Pane>
+	<Pane styleClass="row" layoutY="240" prefHeight="120" prefWidth="320" >
+		<ImageView layoutX = "15" layoutY ="30" fitHeight="60" fitWidth="60" >
+        <image>
+            <Image url="@../../Pictures/Converter/EU.PNG" />
+        	</image>
+     	</ImageView>
+		<Label styleClass="Valuelabel" layoutX = "90" prefHeight="120" prefWidth="320" alignment="CENTER_LEFT"  text="EUR"></Label>
+		<Label styleClass="CurrentcyLabel" prefHeight="120" prefWidth="320" alignment="CENTER_RIGHT" layoutX="-10" text="7,694"></Label>
+	</Pane>
+	<Pane styleClass="row" layoutY="360" prefHeight="120" prefWidth="320">
+		<ImageView layoutX = "15" layoutY ="30" fitHeight="60" fitWidth="60" >
+        	<image>
+            	<Image url="@../../Pictures/Converter/UK.PNG" />
+        	</image>
+     	</ImageView>
+		<Label styleClass="Valuelabel" layoutX ="90" prefHeight="120" prefWidth="320" alignment="CENTER_LEFT"  text="GBP"></Label>
+		<Label styleClass="CurrentcyLabel" prefHeight="120" prefWidth="320" alignment="CENTER_RIGHT" layoutX="-10" text="6,559"></Label>
+	</Pane>
+</AnchorPane>

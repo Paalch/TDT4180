@@ -1,0 +1,15 @@
+#redText {
+	-fx-text-fill: #CC6E5D;
+}
+.row {
+	-fx-background-color:DAC2AA;
+	 -fx-border-color: black; 
+	-fx-border-width: .04;
+}
+.Valuelabel {
+	-fx-font-size: 15px; 
+	-fx-text-fill: #A18D74
+}
+.CurrentcyLabel {
+	-fx-font-size: 32px; 
+}
