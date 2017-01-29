@@ -1,0 +1,82 @@
+package Oppgave3;
+	
+
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Arc;
+import javafx.scene.shape.ArcType;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.CubicCurve;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
+
+
+public class Main extends Application {
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			Scene scene = new Scene(drawHangman(),320,480);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	public Pane drawHangman() {
+		
+		Pane hangman = new Pane();
+		
+		//Floor
+		hangman.getChildren().add(new Line(0,400,320,400));
+		
+		//hight
+		hangman.getChildren().add(new Line(70,400,70,50));
+		
+		//top out
+		hangman.getChildren().add(new Line(70,50,190,50));
+		
+		//line
+		hangman.getChildren().add(new Line(190,50,190,100));
+		
+		//head
+		hangman.getChildren().add(new Circle(190,150,50, Color.BLACK));
+		hangman.getChildren().add(new Circle(190,150,49, Color.WHITE));
+		
+		//eyes
+
+		
+		//Left
+		Pane lefteye = drawEye(9); 
+		lefteye.setLayoutX(160);
+		lefteye.setLayoutY(130);
+		hangman.getChildren().add(eye);
+		
+		//right
+		Pane righteye = drawEye(9) 
+		righteye.setLayoutX(160);
+		righteye.setLayoutY(130);
+		hangman.getChildren().add(eye);
+		
+		
+		
+		return hangman; 
+	}
+	public Pane drawEye(int size) {
+		Pane eye = new Pane();
+		eye.getChildren().add(new Line(-size,-size,size,size));
+		eye.getChildren().add(new Line(-size, size, size,-size));
+		return eye; 
+	}
+}

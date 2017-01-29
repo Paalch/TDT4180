@@ -1,0 +1,92 @@
+package Oppgave3;
+	
+
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Arc;
+import javafx.scene.shape.ArcType;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.CubicCurve;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
+
+
+public class Main extends Application {
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			Scene scene = new Scene(drawHangman(),320,480);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	public Pane drawHangman() {
+		
+		Pane hangman = new Pane();
+		
+		//Floor
+		hangman.getChildren().add(new Line(0,400,320,400));
+		
+		//hight
+		hangman.getChildren().add(new Line(70,400,70,50));
+		
+		//top out
+		hangman.getChildren().add(new Line(70,50,190,50));
+		
+		//line
+		hangman.getChildren().add(new Line(190,50,190,100));
+		
+		//head
+		hangman.getChildren().add(new Circle(190,150,50, Color.BLACK));
+		hangman.getChildren().add(new Circle(190,150,49, Color.WHITE));
+		
+		//eyes
+		//Left
+		Pane lefteye = newEye(9); 
+		lefteye.setLayoutX(170);
+		lefteye.setLayoutY(130);
+		hangman.getChildren().add(lefteye);
+		
+		//right
+		Pane righteye = newEye(9); 
+		righteye.setLayoutX(205);
+		righteye.setLayoutY(130);
+		hangman.getChildren().add(righteye);
+		
+
+		hangman.getChildren().add(new Arc(185, 190, 25, 25, 30, 120));
+		  Arc arc = new Arc(185, 190, 24, 24, 30, 120);
+		  arc.setFill(Color.WHITE);
+		  hangman.getChildren().add(arc);
+		
+		//body
+		hangman.getChildren().add(new Line(190,200,190,310));
+		hangman.getChildren().add(new Line(190,220,240,290));
+		hangman.getChildren().add(new Line(190,220,140,290));
+		hangman.getChildren().add(new Line(190,310,240,370));
+		hangman.getChildren().add(new Line(190,310,140,370));
+		
+		
+		return hangman; 
+	}
+	public Pane newEye(int size) {
+		Pane eye = new Pane();
+		eye.getChildren().add(new Line(-size,-size,size,size));
+		eye.getChildren().add(new Line(-size, size, size,-size));
+		return eye; 
+	}
+}

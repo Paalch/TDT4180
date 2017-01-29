@@ -1,0 +1,42 @@
+package Oppgave3;
+	
+import java.util.ArrayList;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.shape.Line;
+
+
+public class Main extends Application {
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			BorderPane root = new BorderPane();
+			Scene scene = new Scene(root,320,480);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			
+			Line line; 
+			ArrayList<Line> lineList = new ArrayList<Line>(); 
+			for(int i = 0; i<14;i++) {
+				lineList.add(line); 
+			}
+			   lineList[0].setStartX(0.0f);
+			   lineList[0].setStartY(0.0f);
+			   line[0].setEndX(100.0f);
+			   line.setEndY(100.0f);
+			root.getChildren().add(line);
+			
+
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+}
