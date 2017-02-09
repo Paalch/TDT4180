@@ -1,0 +1,25 @@
+package application;
+
+
+import java.util.ArrayList;
+
+public class Building {
+
+	private String name; 
+	private ArrayList<String> rooms = new ArrayList<String>();
+	
+	public building(String name, ArrayList<String> rooms){
+		this.name = name; 
+		this.rooms = rooms; 
+	}
+	public String getName()
+	{
+		return name;
+	}
+	
+	public ArrayList<String> getRooms()
+	{
+		return rooms; 
+	}
+	}
+
