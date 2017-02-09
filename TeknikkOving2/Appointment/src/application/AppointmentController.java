@@ -1,15 +1,12 @@
 package application;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -18,12 +15,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
-public class AppointmentController extends Application {
+public class AppointmentController {
 	
 	private Appointment appointment = new Appointment(); 
 	SpinnerValueFactory.IntegerSpinnerValueFactory minutt1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,45,0,-15);
@@ -64,20 +62,11 @@ public class AppointmentController extends Application {
 	Label errordato; 
 	@FXML 
 	Label errorkl;
+	@FXML
+	TextField tbrepeat;
+	@FXML
+	DatePicker dpEndDate; 
 	
-	
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("Appointment.fxml")),500,650);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
 	public void initialize() {
 		ObservableList<Building> buildings = FXCollections.observableArrayList();  
 		buildings.add(new Building("Realfagsbygget",new ArrayList<String>(Arrays.asList("1","2"))));
@@ -99,9 +88,8 @@ public class AppointmentController extends Application {
 		sp3.setValueFactory(time1);
 		
 	}
-	public static void main(String[] args) {
-		launch(args);
-	}
+	
+	
 	@FXML
 	private void repeat(ActionEvent event) {
 	     if(cbRepeat.isSelected()) {
@@ -138,10 +126,24 @@ public class AppointmentController extends Application {
 				 errordato.setVisible(true);
 			 }
 		 }
-		 else {
+		 else {	 
 			 appointment.setFormal(formal.getText());
 			 appointment.setRom(cbbygg.getValue().toString() + cbRomNr.getValue());
 			 appointment.setDato(fromDate.getValue());
+			 
+			 LocalTime startTime = LocalTime.of(time1.getValue(), minutt2.getValue());
+			 LocalTime endTime = LocalTime.of(time2.getValue(), minutt1.getValue());
+			 appointment.setFra(startTime);
+			 appointment.setTil(endTime);
+			 
+			 if(!cbRepeat.isSelected()){
+				 appointment.setRepetisjon(0);
+			 }
+			 else{
+				 appointment.setRepetisjon(Integer.parseInt(tbrepeat.getText()));
+				 appointment.setSlutt(dpEndDate.getValue());
+			 }
+			 
 			 Stage stage = (Stage) btMake.getScene().getWindow();
 			 stage.close();
 		 }

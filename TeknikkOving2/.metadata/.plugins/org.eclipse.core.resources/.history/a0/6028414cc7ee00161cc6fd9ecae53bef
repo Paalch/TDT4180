@@ -1,0 +1,46 @@
+package application;
+
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+public class MainApp extends Application{
+	
+	@FXML
+	Button btnNew; 
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("MainApp.fxml")),640,480);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	btnnew.setOnAction(new EventHandler<ActionEvent>() {
+	    public void handle(ActionEvent event) {
+	        Parent root;
+	        try {
+	            root = FXMLLoader.load(getClass().getClassLoader().getResource("Appointment.FXML")),500,650);
+	            Stage stage = new Stage();
+	            stage.setTitle("My New Stage Title");
+	            stage.setScene(new Scene(root, 450, 450));
+	            stage.show();
+	            // Hide this current window (if this is what you want)
+	            ((Node)(event.getSource())).getScene().getWindow().hide();
+	        }
+	        catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	}
+}
