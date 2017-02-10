@@ -16,7 +16,6 @@ public class Appointment {
 	private StringProperty romProperty = new SimpleStringProperty();
 	private IntegerProperty repetisjonProperty = new SimpleIntegerProperty();
 	private Property<LocalDate> datoProperty = new ObjectPropertyBase<LocalDate>(null) {
-
 		@Override
 		public Object getBean() {
 			return this;

@@ -3,15 +3,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainApp">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="150.0" minWidth="160.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainApp">
    <children>
       <SplitPane dividerPositions="0.10460251046025104" orientation="VERTICAL" prefHeight="480.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane maxHeight="50.0" minHeight="50.0" minWidth="160.0" prefHeight="50.0" prefWidth="160.0">
                <children>
                   <Label layoutX="14.0" layoutY="8.0" text="Registrerte Avtaler:">
                      <font>
@@ -20,18 +23,36 @@
                   </Label>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="60.0" minWidth="60.0" prefHeight="100.0" prefWidth="160.0">
                <children>
                   <SplitPane dividerPositions="0.8865248226950354" orientation="VERTICAL" prefHeight="425.0" prefWidth="638.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="636.0" />
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="636.0">
                            <children>
-                              <Pane layoutX="14.0" layoutY="-86.0" prefHeight="45.0" prefWidth="636.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Button fx:id="btwnew" layoutX="548.0" layoutY="10.0" mnemonicParsing="false" onAction="#newAppointment" text="Ny Avtale" />
-                                 </children>
-                              </Pane>
+                              <TableView fx:id="tvMain" layoutX="67.0" layoutY="138.0" minHeight="50.0" minWidth="160.0" onContextMenuRequested="#enableedit" prefHeight="372.0" prefWidth="636.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn fx:id="clformal" prefWidth="245.0" text="Formål" />
+                                  <TableColumn fx:id="clrom" editable="false" minWidth="0.0" prefWidth="71.0" text="Rom" />
+                                    <TableColumn fx:id="cldato" editable="false" minWidth="0.0" prefWidth="87.0" text="Dato" />
+                                    <TableColumn fx:id="clfrakl" editable="false" minWidth="4.0" prefWidth="56.0" text="Fra Kl:" />
+                                    <TableColumn fx:id="cltilkl" editable="false" prefWidth="57.0" text="Til Kl:" />
+                                    <TableColumn fx:id="clrepitisjon" editable="false" prefWidth="38.0" text="Repitisjon" />
+                                    <TableColumn fx:id="clsluttdato" editable="false" prefWidth="72.0" text="Slutt Dato" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
+                      <AnchorPane maxHeight="40.0" minHeight="40.0" minWidth="160.0" prefHeight="40.0" prefWidth="160.0">
+                           <children>
+                              <BorderPane prefHeight="40.0" prefWidth="636.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <right>
+                                    <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Button fx:id="btwnew" layoutX="119.0" layoutY="8.0" mnemonicParsing="false" onAction="#newAppointment" text="Ny Avtale" />
+                                          <Button fx:id="btchange" disable="true" layoutX="64.0" layoutY="8.0" mnemonicParsing="false" onAction="#edit" text="Endre" />
+                                       </children>
+                                    </Pane>
+                                 </right>
+                              </BorderPane>
                            </children>
                         </AnchorPane>
                     </items>

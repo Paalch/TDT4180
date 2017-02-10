@@ -22,8 +22,10 @@ import javafx.stage.Stage;
 
 
 public class AppointmentController {
-	
+	private ObservableList<Building> buildings; 
 	private Appointment appointment = new Appointment(); 
+	private MainApp mainApp;
+	private boolean isnew = true;
 	SpinnerValueFactory.IntegerSpinnerValueFactory minutt1 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,45,0,-15);
 	SpinnerValueFactory.IntegerSpinnerValueFactory minutt2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,45,0,-15);
 	
@@ -67,11 +69,25 @@ public class AppointmentController {
 	@FXML
 	DatePicker dpEndDate; 
 	
-	public void initialize() {
-		ObservableList<Building> buildings = FXCollections.observableArrayList();  
-		buildings.add(new Building("Realfagsbygget",new ArrayList<String>(Arrays.asList("1","2"))));
-		buildings.add(new Building("Hovedbygget",new ArrayList<String>(Arrays.asList("3","4"))));
-		buildings.add(new Building("P15",new ArrayList<String>(Arrays.asList("5","6"))));
+	public void setAppointment(Appointment appointment, boolean isnew){
+		if(!isnew){
+		formal.setText(appointment.getFormal());
+		fromDate.setValue(appointment.getDato());
+		
+		sp1.getValueFactory().setValue(appointment.getFra().getHour());
+		sp2.getValueFactory().setValue(appointment.getFra().getMinute());
+		sp3.getValueFactory().setValue(appointment.getTil().getHour());
+		sp4.getValueFactory().setValue(appointment.getTil().getMinute());
+		this.isnew = false;
+		}
+		this.appointment = appointment; 
+		 
+	}
+	
+	public void start(MainApp mainApp){
+		this.mainApp = mainApp;
+		
+		buildings = mainApp.getBuildings();
 		cbbygg.setItems(buildings);
 		cbbygg.setValue(cbbygg.getItems().get(0)); 
 		setRomnrs(new ActionEvent()); 
@@ -86,9 +102,7 @@ public class AppointmentController {
 		sp1.setValueFactory(time2);
 		sp3.setEditable(true);
 		sp3.setValueFactory(time1);
-		
 	}
-	
 	
 	@FXML
 	private void repeat(ActionEvent event) {
@@ -128,11 +142,11 @@ public class AppointmentController {
 		 }
 		 else {	 
 			 appointment.setFormal(formal.getText());
-			 appointment.setRom(cbbygg.getValue().toString() + cbRomNr.getValue());
+			 appointment.setRom(cbbygg.getValue().getID() + cbRomNr.getValue());
 			 appointment.setDato(fromDate.getValue());
 			 
-			 LocalTime startTime = LocalTime.of(time1.getValue(), minutt2.getValue());
-			 LocalTime endTime = LocalTime.of(time2.getValue(), minutt1.getValue());
+			 LocalTime endTime = LocalTime.of(time1.getValue(), minutt2.getValue());
+			 LocalTime startTime = LocalTime.of(time2.getValue(), minutt1.getValue());
 			 appointment.setFra(startTime);
 			 appointment.setTil(endTime);
 			 
@@ -143,7 +157,10 @@ public class AppointmentController {
 				 appointment.setRepetisjon(Integer.parseInt(tbrepeat.getText()));
 				 appointment.setSlutt(dpEndDate.getValue());
 			 }
-			 
+			 if(isnew){
+			 mainApp.setAppointment(appointment);
+			 }
+			 mainApp.setTable();
 			 Stage stage = (Stage) btMake.getScene().getWindow();
 			 stage.close();
 		 }

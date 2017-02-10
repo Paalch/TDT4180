@@ -1,0 +1,141 @@
+package application;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.stage.Stage;
+
+
+public class MainApp extends Application{
+	
+	ObservableList<Building> buildings = FXCollections.observableArrayList(); 
+	private AppointmentController controller; 
+	@FXML
+	Button btchange; 
+	@FXML
+	TableView<Appointment> tvMain; 
+	@FXML
+	TableColumn<Appointment, String> clformal;
+	@FXML
+	TableColumn<Appointment, String> clfrakl; 
+	@FXML
+	TableColumn<Appointment, String> cltilkl;
+	@FXML
+	TableColumn<Appointment, String> clrom; 
+	@FXML
+	TableColumn<Appointment, String> cldato; 
+	@FXML
+	TableColumn<Appointment, String> clrepitisjon; 
+	
+	private ObservableList<Appointment> appointments = FXCollections.observableArrayList();
+	
+	
+	public void initialize(){
+		
+	//adding some default buildings	
+	buildings.add(new Building("Realfagsbygget","R",new ArrayList<String>(Arrays.asList("1","2","3","4","5","6","7"))));
+	buildings.add(new Building("Hovedbygget","H-", new ArrayList<String>(Arrays.asList("111","112","113","114"))));
+	buildings.add(new Building("P15","P15-",new ArrayList<String>(Arrays.asList("411","421","422"))));
+	//Lager et par Appointment objecter for test data 
+	appointments.add(new Appointment());
+	appointments.get(0).setDato(LocalDate.of(2017, 2, 19)); 
+	appointments.get(0).setFormal("Planlegge neste innlevering i MMI");
+	appointments.get(0).setFra(LocalTime.of(10,15));
+	appointments.get(0).setTil(LocalTime.of(11,15));
+	appointments.get(0).setRepetisjon(0);
+	appointments.get(0).setRom("R1");
+	
+	appointments.add(new Appointment());
+	appointments.get(1).setDato(LocalDate.of(2017, 5, 22)); 
+	appointments.get(1).setFormal("Lese til eksamen!");
+	appointments.get(1).setFra(LocalTime.of(8,15));
+	appointments.get(1).setTil(LocalTime.of(16,15));
+	appointments.get(1).setRepetisjon(0);
+	appointments.get(1).setRom("P15-422");
+	
+	tvMain.setItems(appointments);
+	
+	clformal.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getFormal()));
+	clfrakl.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getFra().toString()));
+	cltilkl.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getTil().toString()));
+	cldato.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDato().toString()));
+	clrom.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRom()));
+	clrepitisjon.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRepetisjon().toString()));
+	}
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("MainApp.fxml")),640,480);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Appointments");
+			primaryStage.setMinHeight(150);
+			primaryStage.setMinWidth(160);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+	@FXML
+	private void enableedit(ActionEvent event){
+		btchange.setDisable(false);
+	}
+	
+	public ObservableList<Building> getBuildings(){
+		return buildings; 
+	}
+	@FXML
+	private void edit(ActionEvent event){
+		initAppointment(tvMain.getSelectionModel().getSelectedItem());
+	}
+	
+	@FXML
+	private void newAppointment(ActionEvent event){
+		Appointment appointment = new Appointment(); 
+		appointments.add(appointment);
+		initAppointment(appointment, true); 
+		}
+	
+	private void initAppointment(Appointment appointment, isnew){
+	    try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Appointment.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setMaxWidth(500);
+            stage.setMaxHeight(660);
+            stage.setMinHeight(660);
+            stage.setMinWidth(500);
+            stage.setTitle("New Appointment");
+            stage.setScene(new Scene(root1));  
+            stage.show();
+            
+            
+			AppointmentController controller = fxmlLoader.getController();
+			controller.start(this);
+			this.controller = controller;
+			controller.edit(appointment, isnew);
+	    }
+	    catch (Exception e) {
+	        e.printStackTrace();
+		        }
+	}
+	
+}
