@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
 public class Appointment {
 
 	private StringProperty formalProperty = new SimpleStringProperty();
-	private StringProperty romProperty = new SimpleStringProperty();
+	private Room room;
 	private IntegerProperty repetisjonProperty = new SimpleIntegerProperty();
 	private Property<LocalDate> datoProperty = new ObjectPropertyBase<LocalDate>(null) {
 		@Override
@@ -75,16 +75,16 @@ public class Appointment {
 		return formalProperty;
 	}
 
-	public String getRom() {
-		return romProperty.getValue();
+	public Room getRoom() {
+		return room;
 	}
 
-	public void setRom(String rom) {
-		romProperty.setValue(rom);
+	public void setRoom(Room room) {
+		this.room = room; 
 	}
 
-	public StringProperty romProperty() {
-		return romProperty;
+	public String getRoomString() {
+		return room.getBuilding().getID() + room.getRoom();
 	}
 
 	public LocalDate getDato() {

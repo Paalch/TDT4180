@@ -73,6 +73,8 @@ public class AppointmentController {
 		if(!isnew){
 		formal.setText(appointment.getFormal());
 		fromDate.setValue(appointment.getDato());
+		cbbygg.setValue(appointment.getRoom().getBuilding());
+		cbRomNr.setValue(appointment.getRoom().getRoom());
 		
 		sp1.getValueFactory().setValue(appointment.getFra().getHour());
 		sp2.getValueFactory().setValue(appointment.getFra().getMinute());
@@ -142,7 +144,7 @@ public class AppointmentController {
 		 }
 		 else {	 
 			 appointment.setFormal(formal.getText());
-			 appointment.setRom(cbbygg.getValue().getID() + cbRomNr.getValue());
+			 appointment.setRoom(new Room(cbbygg.getValue(),cbRomNr.getValue()));
 			 appointment.setDato(fromDate.getValue());
 			 
 			 LocalTime endTime = LocalTime.of(time1.getValue(), minutt2.getValue());

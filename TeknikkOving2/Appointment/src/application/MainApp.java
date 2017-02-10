@@ -43,6 +43,8 @@ public class MainApp extends Application{
 	TableColumn<Appointment, String> cldato; 
 	@FXML
 	TableColumn<Appointment, String> clrepitisjon; 
+	@FXML
+	TableColumn<Appointment, String> clsluttdato;
 	
 	
 	
@@ -59,15 +61,16 @@ public class MainApp extends Application{
 	appointments.get(0).setFra(LocalTime.of(10,15));
 	appointments.get(0).setTil(LocalTime.of(11,15));
 	appointments.get(0).setRepetisjon(0);
-	appointments.get(0).setRom("R1");
+	appointments.get(0).setRoom(new Room(buildings.get(0),"1"));
 	
 	appointments.add(new Appointment());
 	appointments.get(1).setDato(LocalDate.of(2017, 5, 22)); 
 	appointments.get(1).setFormal("Lese til eksamen!");
 	appointments.get(1).setFra(LocalTime.of(8,15));
 	appointments.get(1).setTil(LocalTime.of(16,15));
-	appointments.get(1).setRepetisjon(0);
-	appointments.get(1).setRom("P15-422");
+	appointments.get(1).setRepetisjon(1);
+	appointments.get(1).setSlutt(LocalDate.of(2017, 6,22));
+	appointments.get(1).setRoom(new Room(buildings.get(2), "422"));
 	
 	tvMain.setItems(appointments);
 	
@@ -76,9 +79,11 @@ public class MainApp extends Application{
 	clfrakl.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getFra().toString()));
 	cltilkl.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getTil().toString()));
 	cldato.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDato().toString()));
-	clrom.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRom()));
+	clrom.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRoomString()));
 	clrepitisjon.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRepetisjon().toString()));
-
+	clsluttdato.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSlutt() == null?"":data.getValue().getSlutt().toString()));
+	
+	
 	tvMain.setOnMouseClicked((MouseEvent event) -> {
         if(event.getButton().equals(MouseButton.PRIMARY)){
             btchange.setDisable(false);
