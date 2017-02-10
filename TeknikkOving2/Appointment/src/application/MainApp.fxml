@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="150.0" minWidth="160.0" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainApp">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="150.0" minWidth="160.0" prefHeight="480.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainApp">
    <children>
       <SplitPane dividerPositions="0.10460251046025104" orientation="VERTICAL" prefHeight="480.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -34,10 +34,10 @@
                                   <TableColumn fx:id="clformal" prefWidth="245.0" text="Formål" />
                                   <TableColumn fx:id="clrom" editable="false" minWidth="0.0" prefWidth="71.0" text="Rom" />
                                     <TableColumn fx:id="cldato" editable="false" minWidth="0.0" prefWidth="87.0" text="Dato" />
-                                    <TableColumn fx:id="clfrakl" editable="false" minWidth="4.0" prefWidth="56.0" text="Fra Kl:" />
-                                    <TableColumn fx:id="cltilkl" editable="false" prefWidth="57.0" text="Til Kl:" />
-                                    <TableColumn fx:id="clrepitisjon" editable="false" prefWidth="38.0" text="Repitisjon" />
-                                    <TableColumn fx:id="clsluttdato" editable="false" prefWidth="72.0" text="Slutt Dato" />
+                                    <TableColumn fx:id="clfrakl" editable="false" minWidth="4.0" prefWidth="53.0" text="Fra Kl:" />
+                                    <TableColumn fx:id="cltilkl" editable="false" prefWidth="47.0" text="Til Kl:" />
+                                    <TableColumn fx:id="clrepitisjon" editable="false" prefWidth="70.0" text="Repitisjon" />
+                                    <TableColumn fx:id="clsluttdato" editable="false" prefWidth="71.0" text="Slutt Dato" />
                                 </columns>
                               </TableView>
                            </children></AnchorPane>

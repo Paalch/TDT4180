@@ -63,7 +63,7 @@
             </Pane>
             <Pane prefHeight="257.0" prefWidth="500.0" GridPane.rowIndex="2">
                <children>
-                  <DatePicker fx:id="fromDate" layoutX="50.0" layoutY="67.0" />
+                  <DatePicker fx:id="fromDate" editable="false" layoutX="50.0" layoutY="67.0" />
                   <Label layoutX="50.0" layoutY="14.0" text="Valg av tidspunkt:">
                      <font>
                         <Font size="15.0" />
@@ -101,9 +101,9 @@
                <children>
                   <Label layoutX="47.0" layoutY="56.0" text="Slutt dato:" />
                   <Label layoutX="47.0" layoutY="6.0" text="Repiter hver:" />
-                  <TextField alignment="CENTER_RIGHT" layoutX="47.0" layoutY="23.0" prefHeight="25.0" prefWidth="67.0" />
+                  <TextField fx:id="tbrepeat" alignment="CENTER_RIGHT" layoutX="47.0" layoutY="23.0" prefHeight="25.0" prefWidth="67.0" />
                   <Label layoutX="114.0" layoutY="27.0" text="Dag" />
-                  <DatePicker layoutX="49.0" layoutY="73.0" />
+                  <DatePicker fx:id="dpEndDate" editable="false" layoutX="49.0" layoutY="73.0" />
                </children>
             </Pane>
          </children>

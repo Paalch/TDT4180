@@ -27,6 +27,9 @@ public class MainApp extends Application{
 	ObservableList<Building> buildings = FXCollections.observableArrayList(); 
 	private ObservableList<Appointment> appointments = FXCollections.observableArrayList();
 	private AppointmentController controller; 
+	
+	
+	//FXML elements
 	@FXML
 	Button btchange; 
 	@FXML
@@ -46,15 +49,32 @@ public class MainApp extends Application{
 	@FXML
 	TableColumn<Appointment, String> clsluttdato;
 	
-	
-	
+	/*
+	 * Displays main window
+	 */
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("MainApp.fxml")),650,480);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
+			primaryStage.setTitle("Appointments");
+			primaryStage.setMinHeight(150);
+			primaryStage.setMinWidth(160);
+			primaryStage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public void initialize(){
+	
 	//adding some default buildings	
 	buildings.add(new Building("Realfagsbygget","R",new ArrayList<String>(Arrays.asList("1","2","3","4","5","6","7"))));
 	buildings.add(new Building("Hovedbygget","H-", new ArrayList<String>(Arrays.asList("111","112","113","114"))));
 	buildings.add(new Building("P15","P15-",new ArrayList<String>(Arrays.asList("411","421","422"))));
-	//Lager et par Appointment objecter for test data 
+	
+	//Creates a couple of appointsments for testing
 	appointments.add(new Appointment());
 	appointments.get(0).setDato(LocalDate.of(2017, 2, 19)); 
 	appointments.get(0).setFormal("Planlegge neste innlevering i MMI");
@@ -71,10 +91,10 @@ public class MainApp extends Application{
 	appointments.get(1).setRepetisjon(1);
 	appointments.get(1).setSlutt(LocalDate.of(2017, 6,22));
 	appointments.get(1).setRoom(new Room(buildings.get(2), "422"));
-	
 	tvMain.setItems(appointments);
 	
-
+	
+	//Creates the table 
 	clformal.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getFormal()));
 	clfrakl.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getFra().toString()));
 	cltilkl.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getTil().toString()));
@@ -83,60 +103,23 @@ public class MainApp extends Application{
 	clrepitisjon.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRepetisjon().toString()));
 	clsluttdato.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getSlutt() == null?"":data.getValue().getSlutt().toString()));
 	
-	
+	//Enables the edit button, only if row is selected
 	tvMain.setOnMouseClicked((MouseEvent event) -> {
         if(event.getButton().equals(MouseButton.PRIMARY)){
             btchange.setDisable(false);
         }
     });
 	}
-	
-	public void setTable(){
-		tvMain.getColumns().get(0).setVisible(false);
-		tvMain.getColumns().get(0).setVisible(true);
-		
-	}
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			Scene scene = new Scene(FXMLLoader.load(getClass().getResource("MainApp.fxml")),640,480);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Appointments");
-			primaryStage.setMinHeight(150);
-			primaryStage.setMinWidth(160);
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+
+	/*
+	 * Updates the table (workaround)
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
-	@FXML
-	private void enableedit(ActionEvent event){
-		btchange.setDisable(false);
-	}
-	
-	public ObservableList<Building> getBuildings(){
-		return buildings; 
-	}
-	@FXML
-	private void edit(ActionEvent event){
-		initAppointment(tvMain.getSelectionModel().getSelectedItem(), false, "Edit Appointment");
-	}
-	
-	@FXML
-	private void newAppointment(ActionEvent event){
-		Appointment appointment = new Appointment(); 
-		initAppointment(appointment, true, "New Appointment"); 
-		}
-	
-	public void setAppointment(Appointment appointment){
-		appointments.add(appointment);
-	}
-	
+	/*
+	 * Displays the appointment window
+	 */
 	private void initAppointment(Appointment appointment, boolean isnew, String text){
 	    try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Appointment.fxml"));
@@ -160,6 +143,28 @@ public class MainApp extends Application{
 	        e.printStackTrace();
 		        }
 	}
-	
+	public void setTable(){
+		tvMain.getColumns().get(0).setVisible(false);
+		tvMain.getColumns().get(0).setVisible(true);	
+	}
+	public void setAppointment(Appointment appointment){
+		appointments.add(appointment);
+	}
+	@FXML
+	private void enableedit(ActionEvent event){
+		btchange.setDisable(false);
+	}
+	public ObservableList<Building> getBuildings(){
+		return buildings; 
+	}
+	@FXML
+	private void edit(ActionEvent event){
+		initAppointment(tvMain.getSelectionModel().getSelectedItem(), false, "Edit Appointment");
+	}
+	@FXML
+	private void newAppointment(ActionEvent event){
+		Appointment appointment = new Appointment(); 
+		initAppointment(appointment, true, "New Appointment"); 
+		}
 
 }
